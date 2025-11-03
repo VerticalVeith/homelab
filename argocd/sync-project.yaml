@@ -16,4 +16,4 @@ spec:
     - namespace: argocd
       server: https://kubernetes.default.svc
   sourceRepos:
-    - https://github.com/argoproj/argoproj-deployments
+    - https://github.com/VerticalVeith/homelab
