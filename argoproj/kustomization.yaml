@@ -5,4 +5,5 @@ resources:
   - base/argo-cd.yaml
   - base/argocd-image-updater.yaml
   - base/cluster-config.yaml
+  - base/metallb.yaml
   - base/sync-argoproj.yaml
