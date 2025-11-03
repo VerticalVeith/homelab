@@ -1,1 +1,5 @@
-kubectl apply github.com/verticalveith/argocd/
+Onboard argocd
+
+```
+kubectl apply -k https://github.com/VerticalVeith/homelab/argocd
+```
