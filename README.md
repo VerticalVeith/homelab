@@ -1,0 +1,1 @@
+kubectl apply github.com/verticalveith/argocd/
