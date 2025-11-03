@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: argocd
 resources:
   - github.com/argoproj/argo-cd//manifests/core-install?ref=stable
-  - sync-project.yaml
+  - base/sync-project.yaml
