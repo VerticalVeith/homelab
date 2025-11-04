@@ -5,7 +5,7 @@ namespace: metallb-system
 
 resources:
   - github.com/metallb/metallb/config/native?ref=v0.15
-  - base/values.yaml
+  - base/first-pool.yaml
 
 patches:
   - path: overlays/patch-priority-class.yaml
