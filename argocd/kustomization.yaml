@@ -4,6 +4,7 @@ namespace: argocd
 resources:
   - github.com/argoproj/argo-cd//manifests/core-install?ref=stable
   - base/sync-project.yaml
+  - base/repositories.yaml
 
 patches:
   - path: overlays/patch-priority-class.yaml
