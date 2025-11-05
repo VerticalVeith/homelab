@@ -6,4 +6,5 @@ resources:
   - base/argocd-image-updater.yaml
   - base/cluster-config.yaml
   - base/metallb.yaml
+  - base/proxmoxcsi.yaml
   - base/sync-argoproj.yaml
