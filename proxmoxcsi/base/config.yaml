@@ -9,6 +9,6 @@ stringData:
     clusters:
       - url: https://buergerhoff.local:8006/api2/json
         insecure: false
-        token_id: "kubernetes-csi@pve!csi"
+        token_id_file: "/etc/proxmox/token_id"
         token_secret_file: "/etc/proxmox/token_secret"
         region: Home

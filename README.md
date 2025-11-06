@@ -133,7 +133,7 @@ This allows kubernetes to use storage from the Proxmox host. Installation based 
 - Create a secret file on the management node:
 
     ```bash
-    mkdir /etc/proxmox && echo "<the token value>" > /etc/proxmox/token_secret
+    mkdir /etc/proxmox && echo "<the token value>" > /etc/proxmox/token_secret && echo 'kubernetes-csi@pve!csi' > /etc/proxmox/token_id
     ```
 
 ### Bootstraping GitOps
