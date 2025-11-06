@@ -130,7 +130,7 @@ This allows kubernetes to use storage from the Proxmox host. Installation based 
     pveum user token add kubernetes-csi@pve csi -privsep 0
     ```
 
-- Create a secret file on the all nodes:
+- ! This is currently broken. We set the secret in the proxmoxcsi until I figure out how the hell the config secret files work:
 
     ```bash
     mkdir /etc/proxmox && echo "<the token value>" > /etc/proxmox/token_secret && echo 'kubernetes-csi@pve!csi' > /etc/proxmox/token_id
