@@ -105,7 +105,7 @@ We can `sudo -u postgres psql` to access the postgres server.
 - And now we can join the k3s cluster on our workload container:
 
     ```bash
-    curl -sfL https://get.k3s.io | sh -s - agent --token=k3s --server https://k3s-crtl.buergerhoff.com:6443
+    curl -sfL https://get.k3s.io | sh -s - agent --token=k3s --server https://k3s-crtl.buergerhoff.com:6443 --node-label topology.kubernetes.io/region=Home --node-label topology.kubernetes.io/zone=buergerhoff
     ```
 
 We should now see our nodes:
@@ -130,7 +130,7 @@ This allows kubernetes to use storage from the Proxmox host. Installation based 
     pveum user token add kubernetes-csi@pve csi -privsep 0
     ```
 
-- Create a secret file on the management node:
+- Create a secret file on the all nodes:
 
     ```bash
     mkdir /etc/proxmox && echo "<the token value>" > /etc/proxmox/token_secret && echo 'kubernetes-csi@pve!csi' > /etc/proxmox/token_id
