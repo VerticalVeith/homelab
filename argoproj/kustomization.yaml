@@ -8,3 +8,4 @@ resources:
   - base/metallb.yaml
   - base/proxmoxcsi.yaml
   - base/sync-argoproj.yaml
+  - base/traefik.yaml
