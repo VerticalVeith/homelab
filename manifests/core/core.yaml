@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/VerticalVeith/homelab
     targetRevision: main
-    path: kubernetes/core
+    path: manifests/core
     directory:
       recurse: true
       include: "{**.yaml}"
