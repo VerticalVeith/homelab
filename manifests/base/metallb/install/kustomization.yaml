@@ -3,7 +3,8 @@ kind: Kustomization
 
 resources:
   - github.com/metallb/metallb//config/native?ref=main
-  - base/first-pool.yaml
+  - base/pools.yaml
+  - base/advertisements.yaml
 
 patches:
   - path: overlays/patch-priority-class.yaml
