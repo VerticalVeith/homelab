@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/VerticalVeith/homelab
+    targetRevision: HEAD
+    path: manifests/apps
+    directory:
+      recurse: true
+      include: "**all.yaml"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+      syncOptions:
+        - ApplyOutOfSyncOnly=true
+        - RespectIgnoreDifferences=true
+      automated:
+        prune: true
+        selfHeal: true
