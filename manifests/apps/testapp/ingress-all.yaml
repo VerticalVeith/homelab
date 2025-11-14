@@ -1,0 +1,11 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: testapp
+spec:
+  routes:
+    - match: Host(`testapp.buergerhoff.local`)
+      kind: Rule
+      services:
+        - name: testapp-nginx-svc
+          kind: Service

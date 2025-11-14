@@ -4,8 +4,8 @@ metadata:
   name: traefik-dashboard
 spec:
   routes:
-  - match: Host(`traefik.buergerhoff.local`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
-    kind: Rule
-    services:
-    - name: api@internal
-      kind: TraefikService
+    - match: Host(`traefik.buergerhoff.local`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+      kind: Rule
+      services:
+        - name: api@internal
+          kind: TraefikService
