@@ -1,25 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: core
+  name: base
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "25"
 spec:
   project: default
   source:
     repoURL: https://github.com/VerticalVeith/homelab
-    targetRevision: main
-    path: manifests/core
+    targetRevision: HEAD
+    path: manifests/base
     directory:
       recurse: true
-      include: "{**-apps.yaml}"
+      include: "**all.yaml"
   destination:
     server: https://kubernetes.default.svc
-    namespace: argo
+    namespace: argocd
   syncPolicy:
     syncOptions:
       - ApplyOutOfSyncOnly=true
     automated:
       prune: true
       selfHeal: true
+    retry:
+      limit: 10
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 10m
