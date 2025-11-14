@@ -282,9 +282,8 @@ This allows kubernetes to use storage from the Proxmox host. Installation based 
 This repo contains all the GitOps manifest files. ArgoCD can manage itself, but we need to get it going first:
 
     ```bash
-    kubectl apply -k https://github.com/VerticalVeith/homelab/cluster-config
-    kubectl apply -k https://github.com/VerticalVeith/homelab/argocd
-    kubectl apply -k https://github.com/VerticalVeith/homelab/argoproj
+    kubectl apply -k https://github.com/VerticalVeith/homelab/manifests/base/argocd/install
+    kubectl apply -f https://raw.githubusercontent.com/VerticalVeith/homelab/refs/heads/main/manifests/argocd.yaml
     ```
 
 ## Issues

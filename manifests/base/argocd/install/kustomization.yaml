@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+
+resources:
+  - repositories.yaml
+  - github.com/argoproj/argo-cd//manifests/core-install?ref=stable
+  
+patches:
+  - path: overlays/patch-priority-class.yaml
+    target:
+      kind: Deployment
+  - path: overlays/patch-priority-class.yaml
+    target:
+      kind: StatefulSet
