@@ -48,3 +48,26 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 80
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: testapp-nginx-ingress
+  labels:
+    app: testapp-nginx
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: testapp.buergerhoff.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: testapp-nginx-svc
+                port:
+                  number: 80
