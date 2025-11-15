@@ -17,6 +17,11 @@ spec:
     ports:
       traefik:
         expose: true
+    service:
+      ipFamilyPolicy: "RequireDualStack"
+      ipFamilies:
+        - IPv4
+        - IPv6
     providers:
       kubernetesCRD:
         allowCrossNamespace: true
