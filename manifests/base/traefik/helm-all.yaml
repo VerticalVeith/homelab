@@ -14,19 +14,24 @@ spec:
     targetRevision: 37.3.0
     helm:
       valuesObject:
-        additionalArguments:
-          - "--api"
-          - "--api.dashboard=true"
-          - "--api.insecure=true"
-          - "--certificatesresolvers.myresolver.acme.email=veith.buergerhoff@gmail.com"
-          - "--certificatesresolvers.myresolver.acme.storage=/data/acme.json"
-          - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-          - "--certificatesresolvers.myresolver.acme.caServer=https://acme-v02.api.letsencrypt.org/directory"
+        entryPoints:
+          web:
+            address: ":80"
+          websecure:
+            address: ":443"
         ports:
           traefik:
             # TODO: We might want to disable this in the future for security reasons
             expose:
               default: true
+        certificatesResolvers:
+          main:
+            acme:
+              email: veith.buergerhoff@gmail.com
+              storage: "/data/acme.json"
+              httpChallenge:
+                # Entry point to use during the ACME HTTP-01 challenge.
+                entryPoint: "web"
         service:
           annotations:
             metallb.io/loadBalancerIPs: "192.168.12.230,2a04:4540:6500:99::230"

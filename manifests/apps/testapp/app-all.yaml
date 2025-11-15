@@ -50,34 +50,39 @@ spec:
       targetPort: 80
 
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
-  name: testapp-nginx-ingress
-  labels:
-    app: testapp-nginx
-  annotations:
-    kubernetes.io/ingress.class: "traefik"
+  name: testapp-http
 spec:
-  ingressClassName: traefik
+  parentRefs:
+    - name: traefik
+      sectionName: http
+      kind: Gateway
+  hostnames:
+    - testapp.buergerhoff.com
   rules:
-    - host: testapp.buergerhoff.local
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: testapp-nginx-svc
-                port:
-                  number: 80
-    - host: testapp.buergerhoff.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: testapp-nginx-svc
-                port:
-                  number: 80
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: testapp-https
+spec:
+  parentRefs:
+    - name: traefik
+      sectionName: https
+      kind: Gateway
+  hostnames:
+    - testapp.buergerhoff.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: testapp-nginx-svc
+          port: 80
