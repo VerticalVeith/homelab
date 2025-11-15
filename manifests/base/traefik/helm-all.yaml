@@ -29,7 +29,7 @@ spec:
               default: true
         service:
           annotations:
-            metallb.io/loadBalancerIPs: "192.168.12.230,2a04:4540:6513:1a00::230,2a04:4540:6500:99::230"
+            metallb.io/loadBalancerIPs: "192.168.12.230,2a04:4540:6500:99::230"
           ipFamilyPolicy: RequireDualStack
           ipFamilies:
             - IPv4
