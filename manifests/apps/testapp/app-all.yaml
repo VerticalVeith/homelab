@@ -71,3 +71,13 @@ spec:
                 name: testapp-nginx-svc
                 port:
                   number: 80
+    - host: testapp.buergerhoff.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: testapp-nginx-svc
+                port:
+                  number: 80
