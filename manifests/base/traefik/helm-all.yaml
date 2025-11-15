@@ -28,7 +28,7 @@ spec:
             expose:
               default: true
         service:
-          ipFamilyPolicy: "RequireDualStack"
+          ipFamilyPolicy: "PreferDualStack"
           ipFamilies:
             - IPv4
             - IPv6
