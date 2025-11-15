@@ -238,7 +238,7 @@ We can `su postgres` and to run `psql` access the postgres server.
 
     ```bash
     password="<postgres password>"
-    curl -sfL https://get.k3s.io | sh -s - server --disable servicelb --disable-network-policy --datastore-endpoint="postgres://k3s:$password@postgres.buergerhoff.local:5432/k3s" --datastore-cafile="/root/.ssh/postgres.crt" --datastore-certfile="/root/.ssh/k3s.crt" --datastore-keyfile="/root/.ssh/k3s.key" --node-label topology.kubernetes.io/region=home --node-label topology.kubernetes.io/zone=buergerhoff
+    curl -sfL https://get.k3s.io | sh -s - server --disable servicelb --disable traefik --disable-network-policy --datastore-endpoint="postgres://k3s:$password@postgres.buergerhoff.local:5432/k3s" --datastore-cafile="/root/.ssh/postgres.crt" --datastore-certfile="/root/.ssh/k3s.crt" --datastore-keyfile="/root/.ssh/k3s.key" --node-label topology.kubernetes.io/region=home --node-label topology.kubernetes.io/zone=buergerhoff
     cat /var/lib/rancher/k3s/server/agent-token
     ```
 

@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  namespace: argocd
+spec:
+  destination:
+    namespace: traefik
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://traefik.github.io/charts
+    chart: traefik
+    helm:
+      valuesObject:
+        additionalArguments:
+          - "--api"
+          - "--api.dashboard=true"
+          - "--api.insecure=true"
+          - "--certificatesresolvers.myresolver.acme.email=veith.buergerhoff@gmail.com"
+          - "--certificatesresolvers.myresolver.acme.storage=/data/acme.json"
+          - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+          - "--certificatesresolvers.myresolver.acme.caServer=https://acme-v02.api.letsencrypt.org/directory"
+        ports:
+          traefik:
+            expose: true
+        service:
+          ipFamilyPolicy: "RequireDualStack"
+          ipFamilies:
+            - IPv4
+            - IPv6
+    providers:
+      kubernetesCRD:
+        allowCrossNamespace: true
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
