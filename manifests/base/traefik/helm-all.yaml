@@ -24,7 +24,9 @@ spec:
           - "--certificatesresolvers.myresolver.acme.caServer=https://acme-v02.api.letsencrypt.org/directory"
         ports:
           traefik:
-            expose: true
+            # TODO: We might want to disable this in the future for security reasons
+            expose:
+              default: true
         service:
           ipFamilyPolicy: "RequireDualStack"
           ipFamilies:
