@@ -49,46 +49,25 @@ spec:
       port: 80
       targetPort: 80
 ---
-apiVersion: gateway.networking.k8s.io/v1
-kind: GatewayClass
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
-  name: traefik
+  name: testapp
 spec:
-  controllerName: traefik.io/gateway-controller
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: testapp-http
-spec:
-  parentRefs:
-    - name: traefik
-      sectionName: http
-      kind: Gateway
-  hostnames:
-    - testapp.buergerhoff.com
-  rules:
-    - filters:
-        - type: RequestRedirect
-          requestRedirect:
-            scheme: https
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: testapp-https
-spec:
-  parentRefs:
-    - name: traefik
-      sectionName: https
-      kind: Gateway
-  hostnames:
-    - testapp.buergerhoff.com
-  rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /
-      backendRefs:
-        - name: testapp-nginx-svc
-          port: 80
+  entryPoints:
+    - web
+  routes:
+  - kind: Rule
+    match: Host(`testapp.buergerhoff.com`)
+    services:
+    - kind: Service
+      name: testapp-nginx-svc
+      passHostHeader: true
+      port: 80
+      responseForwarding:
+        flushInterval: 1ms
+      scheme: https
+  tls:
+    certResolver: main
+    domains:
+    - main: buergerhoff.com
