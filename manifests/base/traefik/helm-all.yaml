@@ -32,7 +32,6 @@ spec:
             matchRule: Host(`traefik.buergerhoff.local`)
             entryPoints: 
               - web
-              - websecure
         additionalArguments:
           - "--api.insecure=true"
         certificatesResolvers:
