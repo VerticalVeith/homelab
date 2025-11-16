@@ -55,8 +55,8 @@ metadata:
   name: testapp
 spec:
   entryPoints:
-    - websecure
     - web
+    - websecure
   routes:
   - kind: Rule
     match: Host(`testapp.buergerhoff.com`)
