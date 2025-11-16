@@ -14,6 +14,11 @@ spec:
     targetRevision: 37.3.0
     helm:
       valuesObject:
+        entryPoints:
+          web:
+            address: ":80"
+          websecure:
+            address: ":443"
         ports:
           traefik:
             # TODO: We might want to disable this in the future for security reasons
@@ -30,7 +35,8 @@ spec:
             acme:
               email: veith.buergerhoff@gmail.com
               storage: "/data/acme.json"
-              tlschallenge: {}
+              httpChallenge:
+                entryPoint: web
         service:
           annotations:
             metallb.io/loadBalancerIPs: "192.168.12.230,2a04:4540:6500:99::230"
