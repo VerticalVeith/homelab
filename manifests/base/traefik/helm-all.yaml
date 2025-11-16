@@ -38,10 +38,7 @@ spec:
           ipFamilyPolicy: RequireDualStack
           ipFamilies:
             - IPv4
-            - IPv6
-        experimental:
-          kubernetesGateway: 
-            enabled: true          
+            - IPv6       
     providers:
       kubernetesCRD:
         allowCrossNamespace: true
