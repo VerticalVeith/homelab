@@ -20,14 +20,17 @@ spec:
           websecure:
             address: ":443"
         ports:
-          traefik:
-            # TODO: We might want to disable this in the future for security reasons
-            expose:
-              default: true
+          web:
+            redirections:
+              entryPoint:
+                to: websecure
+                scheme: https
+                permanent: true
         ingressRoute:
           dashboard:
             enabled: true
-            matchRule: Host(`traefik.buergerhoff.com`)
+            matchRule: Host(`traefik.buergerhoff.local`)
+            entryPoints: ["websecure"]
         additionalArguments:
           - "--api.insecure=true"
         certificatesResolvers:
