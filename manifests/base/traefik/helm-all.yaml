@@ -30,7 +30,9 @@ spec:
           dashboard:
             enabled: true
             matchRule: Host(`traefik.buergerhoff.local`)
-            entryPoints: ["websecure"]
+            entryPoints: 
+              - web
+              - websecure
         additionalArguments:
           - "--api.insecure=true"
         certificatesResolvers:
