@@ -69,5 +69,3 @@ spec:
       scheme: https
   tls:
     certResolver: main
-    domains:
-    - main: buergerhoff.com

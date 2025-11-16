@@ -14,31 +14,42 @@ spec:
     targetRevision: 37.3.0
     helm:
       valuesObject:
-        entryPoints:
-          web:
-            address: ":80"
-          websecure:
-            address: ":443"
         ports:
           traefik:
             # TODO: We might want to disable this in the future for security reasons
             expose:
               default: true
+        ingressRoute:
+          dashboard:
+            enabled: true
+            matchRule: Host(`traefik.buergerhoff.com`)
+        additionalArguments:
+          - "--api.insecure=true"
         certificatesResolvers:
           main:
             acme:
               email: veith.buergerhoff@gmail.com
               storage: "/data/acme.json"
-              httpChallenge:
-                # Entry point to use during the ACME HTTP-01 challenge.
-                entryPoint: "web"
+              tlschallenge: {}
         service:
           annotations:
             metallb.io/loadBalancerIPs: "192.168.12.230,2a04:4540:6500:99::230"
           ipFamilyPolicy: RequireDualStack
           ipFamilies:
             - IPv4
-            - IPv6       
+            - IPv6
+        # extraObjects:
+        #   - apiVersion: traefik.io/v1alpha1
+        #     kind: IngressRoute
+        #     metadata:
+        #       name: traefik-dashboard
+        #     spec:
+        #       routes:
+        #         - match: Host(`traefik.buergerhoff.local`)
+        #           kind: Rule
+        #           services:
+        #             - name: api@internal
+        #               kind: TraefikService
     providers:
       kubernetesCRD:
         allowCrossNamespace: true
