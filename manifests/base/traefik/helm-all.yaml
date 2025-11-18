@@ -19,13 +19,13 @@ spec:
             address: ":80"
           websecure:
             address: ":443"
-        ports:
-          web:
-            redirections:
-              entryPoint:
-                to: websecure
-                scheme: https
-                permanent: true
+        # ports:
+        #   web:
+        #     redirections:
+        #       entryPoint:
+        #         to: websecure
+        #         scheme: https
+        #         permanent: true
         ingressRoute:
           dashboard:
             enabled: true
