@@ -67,6 +67,6 @@ spec:
       port: 80
       responseForwarding:
         flushInterval: 1ms
-      scheme: https
+      scheme: http
   tls:
     certResolver: main
