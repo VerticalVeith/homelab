@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: proxmoxcsi
+    path: manifests/base/proxmoxcsi/install
     repoURL: https://github.com/VerticalVeith/homelab
     targetRevision: HEAD
   syncPolicy:
