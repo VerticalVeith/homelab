@@ -10,5 +10,5 @@ stringData:
       - url: https://buergerhoff.local:8006/api2/json
         insecure: false
         token_id: "kubernetes-csi@pve!csi"
-        token_secret: "da76b4a5-a265-48b1-a370-ca55e9005532"
-        region: Home
+        token_secret: "ff39049b-85b7-4028-821a-f9c763bb202c"
+        region: home

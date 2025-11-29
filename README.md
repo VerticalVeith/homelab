@@ -7,14 +7,13 @@ Based on: https://github.com/argoproj/argoproj-deployments
 Some stuff is based on https://www.suse.com/c/rancher_blog/deploying_ha_k3s_external_database/ and https://gist.github.com/triangletodd/02f595cd4c0dc9aac5f7763ca2264185 https://kevingoos.medium.com/kubernetes-inside-proxmox-lxc-cce5c9927942
 
 TODO: 
-- local hostnames
 - certificate renewal
 
 
 ### Adding ssh key to node
 
     ```bash
-    scp .ssh/id_rsa.pub root@pve.buergerhoff.local:/root/.ssh/authorized_keys
+    scp .ssh/id_rsa.pub root@pve.buergerhoff.lan:/root/.ssh/authorized_keys
     ```
 
 ### Creating the containers
@@ -110,7 +109,7 @@ TODO:
 - This setup uses certificates. Create a keypair to prove the postgres authenticity to consumers:
 
     ```bash
-    postgresHost="postgres.buergerhoff.local"
+    postgresHost="postgres.buergerhoff.lan"
     openssl req -new -x509 -days 365 -nodes -text -out /var/lib/pgsql/data/postgres.crt -keyout /var/lib/pgsql/data/postgres.key -subj "/CN=$postgresHost" -addext "subjectAltName=DNS:$postgresHost"
     chown postgres:postgres /var/lib/pgsql/data/postgres.key /var/lib/pgsql/data/postgres.crt
     chmod 0600 /var/lib/pgsql/data/postgres.key
@@ -238,7 +237,7 @@ We can `su postgres` and to run `psql` access the postgres server.
 
     ```bash
     password="<postgres password>"
-    curl -sfL https://get.k3s.io | sh -s - server --disable servicelb --disable traefik --disable-network-policy --datastore-endpoint="postgres://k3s:$password@postgres.buergerhoff.local:5432/k3s" --datastore-cafile="/root/.ssh/postgres.crt" --datastore-certfile="/root/.ssh/k3s.crt" --datastore-keyfile="/root/.ssh/k3s.key" --node-label topology.kubernetes.io/region=home --node-label topology.kubernetes.io/zone=buergerhoff --cluster-cidr=10.42.0.0/16,fd42::/48 --service-cidr=10.43.0.0/16,fd43::/112 --node-ip=192.168.12.215,2a04:4540:6513:1a00.be24:11ff:fe6b:4f1f
+    curl -sfL https://get.k3s.io | sh -s - server --disable servicelb --disable traefik --disable-network-policy --datastore-endpoint="postgres://k3s:$password@postgres.buergerhoff.lan:5432/k3s" --datastore-cafile="/root/.ssh/postgres.crt" --datastore-certfile="/root/.ssh/k3s.crt" --datastore-keyfile="/root/.ssh/k3s.key" --node-label topology.kubernetes.io/region=home --node-label topology.kubernetes.io/zone=buergerhoff --cluster-cidr=10.42.0.0/16,fd42::/48 --service-cidr=10.43.0.0/16,fd43::/112 --node-ip=192.168.12.215,2a04:4540:6513:1a00.be24:11ff:fe6b:4f1f
     cat /var/lib/rancher/k3s/server/agent-token
     ```
 
@@ -246,7 +245,7 @@ We can `su postgres` and to run `psql` access the postgres server.
 
     ```bash
     token="<node token>"
-    curl -sfL https://get.k3s.io | sh -s - agent --server https://k3s-server1.buergerhoff.local:6443 --node-label topology.kubernetes.io/region=home --node-label topology.kubernetes.io/zone=buergerhoff --token $token
+    curl -sfL https://get.k3s.io | sh -s - agent --server https://k3s-server1.buergerhoff.lan:6443 --node-label topology.kubernetes.io/region=home --node-label topology.kubernetes.io/zone=buergerhoff --token $token
     ```
 
 We should now see our nodes:
