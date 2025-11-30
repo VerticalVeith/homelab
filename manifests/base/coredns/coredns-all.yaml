@@ -6,6 +6,8 @@ metadata:
 data:
   buergerhoff.server: |
     buergerhoff.lan {
-      hosts
-      errors
+      hosts {
+        192.168.12.220 pve.buergerhoff.lan
+        fallthrough
+      }
     }
