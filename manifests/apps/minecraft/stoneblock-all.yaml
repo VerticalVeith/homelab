@@ -14,8 +14,11 @@ spec:
     targetRevision: 5.0.0
     helm:
       valuesObject:
-        minecraftServer.eula: true
+        minecraftServer:
+          eula: true
         persistence:
+          dataDir:
+            enabled: true
           storageClass: proxmox-lvm
   syncPolicy:
     syncOptions:
