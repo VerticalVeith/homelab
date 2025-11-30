@@ -5,7 +5,7 @@ metadata:
 allowVolumeExpansion: true
 parameters:
   csi.storage.k8s.io/fstype: xfs
-  storage: lvm
+  storage: local
 provisioner: csi.proxmox.sinextra.dev
 reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
