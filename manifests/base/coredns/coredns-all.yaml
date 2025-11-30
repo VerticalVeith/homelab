@@ -4,7 +4,5 @@ metadata:
   name: coredns-custom
   namespace: kube-system
 data:
-  host.server: |
-    . {
-        hosts
-    }
+  host.override: |
+    hosts
