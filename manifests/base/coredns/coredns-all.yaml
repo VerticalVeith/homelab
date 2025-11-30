@@ -6,6 +6,6 @@ metadata:
 data:
   buergerhoff.server: |
     buergerhoff.lan {
-      log
       hosts
+      log
     }
