@@ -37,6 +37,10 @@ spec:
             storage: local-lvm
             reclaimPolicy: Delete
             fstype: xfs
+          - name: proxmox-vault
+            storage: vault-pool
+            reclaimPolicy: Delete
+            fstype: zfs
   syncPolicy:
     managedNamespaceMetadata:
       labels:
