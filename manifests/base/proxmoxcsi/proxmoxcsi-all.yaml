@@ -24,7 +24,7 @@ spec:
 
         # Deploy CSI controller only on control-plane nodes
         nodeSelector:
-          node-role.kubernetes.io/control-plane: true
+          node-role.kubernetes.io/control-plane: "true"
         tolerations:
           - key: node-role.kubernetes.io/control-plane
             operator: Exists
