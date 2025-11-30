@@ -7,8 +7,8 @@ metadata:
 stringData:
   config.yaml: |
     clusters:
-      - url: https://pve.buergerhoff.lan:8006/api2/json
-        insecure: false
+      - url: http://192.168.12.220:8006/api2/json
+        insecure: true
         token_id: "kubernetes-csi@pve!csi"
         token_secret: "ff39049b-85b7-4028-821a-f9c763bb202c"
         region: home
