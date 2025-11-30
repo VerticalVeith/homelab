@@ -38,7 +38,7 @@ spec:
             reclaimPolicy: Delete
             fstype: xfs
           - name: proxmox-vault
-            storage: vault-pool
+            storage: vault
             reclaimPolicy: Delete
             fstype: zfs
   syncPolicy:
