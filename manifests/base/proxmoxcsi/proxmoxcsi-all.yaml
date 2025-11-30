@@ -9,9 +9,33 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: manifests/base/proxmoxcsi/install
-    repoURL: https://github.com/VerticalVeith/homelab
-    targetRevision: HEAD
+    repoURL: oci://ghcr.io/sergelogvinov/charts/proxmox-csi-plugin
+    chart: proxmox-csi-plugin
+    targetRevision: 0.5.1
+    helm:
+      valuesObject:
+        config:
+          clusters:
+            - url: https://192.168.12.220:8006/api2/json
+              insecure: true
+              token_id: "kubernetes-csi@pve!csi"
+              token_secret: "ff39049b-85b7-4028-821a-f9c763bb202c"
+              region: home
+
+        # Deploy CSI controller only on control-plane nodes
+        nodeSelector:
+          node-role.kubernetes.io/control-plane: ""
+        tolerations:
+          - key: node-role.kubernetes.io/control-plane
+            effect: NoSchedule
+
+        # Define storage classes
+        # See https://pve.proxmox.com/wiki/Storage
+        storageClass:
+          - name: proxmox-lvm
+            storage: local-lvm
+            reclaimPolicy: Delete
+            fstype: xfs
   syncPolicy:
     managedNamespaceMetadata:
       labels:
