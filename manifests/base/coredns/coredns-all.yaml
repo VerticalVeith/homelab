@@ -5,9 +5,9 @@ metadata:
   namespace: kube-system
 data:
   buergerhoff.server: |
-    buergerhoff.lan {
+    buergerhoff buergerhoff.lan {
       hosts {
-        192.168.12.220 pve.buergerhoff.lan
+        192.168.12.220 pve.buergerhoff.lan buergerhoff.lan buergerhoff
         fallthrough
       }
     }
