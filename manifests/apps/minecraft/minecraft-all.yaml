@@ -4,7 +4,7 @@ metadata:
   name: stoneblocks-pvc
   namespace: minecraft
 spec:
-  storageClassName: proxmox-local
+  storageClassName: proxmox-lvm
   accessModes:
     - ReadWriteMany
   resources:

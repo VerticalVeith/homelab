@@ -1,13 +1,11 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: proxmox-local
+  name: proxmox-lvm
+allowVolumeExpansion: true
 parameters:
   csi.storage.k8s.io/fstype: xfs
-  storage: local
-  cache: writethrough
-  ssd: "true"
+  storage: lvm
 provisioner: csi.proxmox.sinextra.dev
-allowVolumeExpansion: true
-reclaimPolicy: Retain
+reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
