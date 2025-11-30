@@ -1,24 +1,10 @@
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: stoneblocks-pv
-  namespace: minecraft
-spec:
-  capacity:
-    storage: 10Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: proxmox-data-xfs
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: stoneblocks-pvc
   namespace: minecraft
 spec:
-  storageClassName: proxmox-data-xfs
+  storageClassName: proxmox-data
   accessModes:
     - ReadWriteMany
   resources:
