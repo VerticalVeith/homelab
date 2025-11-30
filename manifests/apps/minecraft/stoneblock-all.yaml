@@ -19,7 +19,7 @@ spec:
         persistence:
           dataDir:
             enabled: true
-          storageClass: proxmox-lvm
+          storageClass: proxmox-vault
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
