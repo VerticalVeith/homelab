@@ -7,5 +7,5 @@ data:
   buergerhoff.server: |
     buergerhoff.lan {
       hosts
-      log
+      error
     }
