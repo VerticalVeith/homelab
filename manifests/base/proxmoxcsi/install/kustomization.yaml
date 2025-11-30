@@ -3,5 +3,5 @@ kind: Kustomization
 
 resources:
   - config.yaml
-  - classes.yaml
   - https://raw.githubusercontent.com/sergelogvinov/proxmox-csi-plugin/main/docs/deploy/proxmox-csi-plugin-release.yml
+  - classes.yaml
