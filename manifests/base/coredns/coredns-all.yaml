@@ -4,5 +4,7 @@ metadata:
   name: coredns-custom
   namespace: kube-system
 data:
-  host.override: |
-    hosts
+  buergerhoff.servers: |
+    buergerhoff.lan {
+      hosts
+    }
