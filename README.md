@@ -237,7 +237,7 @@ We can `su postgres` and to run `psql` access the postgres server.
 
     ```bash
     password="<postgres password>"
-    curl -sfL https://get.k3s.io | sh -s - server --disable servicelb --disable traefik --disable-network-policy --datastore-endpoint="postgres://k3s:$password@postgres.buergerhoff.lan:5432/k3s" --datastore-cafile="/root/.ssh/postgres.crt" --datastore-certfile="/root/.ssh/k3s.crt" --datastore-keyfile="/root/.ssh/k3s.key" --node-label topology.kubernetes.io/region=home --node-label topology.kubernetes.io/zone=buergerhoff --cluster-cidr=10.42.0.0/16,fd42::/48 --service-cidr=10.43.0.0/16,fd43::/112 --node-ip=192.168.12.215,2a04:4540:6513:1a00.be24:11ff:fe6b:4f1f
+    curl -sfL https://get.k3s.io | sh -s - server --disable servicelb --disable traefik --disable-network-policy --datastore-endpoint="postgres://k3s:$password@postgres.buergerhoff.lan:5432/k3s" --datastore-cafile="/root/.ssh/postgres.crt" --datastore-certfile="/root/.ssh/k3s.crt" --datastore-keyfile="/root/.ssh/k3s.key" --node-label topology.kubernetes.io/region=home --node-label topology.kubernetes.io/zone=buergerhoff --cluster-cidr=10.42.0.0/16,fd42::/48 --service-cidr=10.43.0.0/16,fd43::/112 --node-ip=192.168.12.215,2a04:4540:6513:1a00.be24:11ff:fe6b:4f1f --default-local-storage-path /mnt/data
     cat /var/lib/rancher/k3s/server/agent-token
     ```
 
