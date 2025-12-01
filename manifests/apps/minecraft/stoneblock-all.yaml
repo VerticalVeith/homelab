@@ -16,6 +16,10 @@ spec:
       valuesObject:
         minecraftServer:
           eula: true
+          type: FTBA
+          ftbModpackId: 130
+          ftbModpackVersionId: 100157
+          enableCommandBlock: true
         persistence:
           dataDir:
             enabled: true
