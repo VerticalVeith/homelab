@@ -23,7 +23,7 @@ spec:
           ftbModpackId: 130
           ftbModpackVersionId: 100157
           enableCommandBlock: true
-          memory: 4G
+          memory: 6G
         persistence:
           dataDir:
             enabled: true
