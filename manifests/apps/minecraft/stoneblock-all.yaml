@@ -14,12 +14,16 @@ spec:
     targetRevision: 5.0.0
     helm:
       valuesObject:
+        resources:
+          requests:
+            memory: 2048Mi
         minecraftServer:
           eula: true
           type: FTBA
           ftbModpackId: 130
           ftbModpackVersionId: 100157
           enableCommandBlock: true
+          memory: 4G
         persistence:
           dataDir:
             enabled: true
