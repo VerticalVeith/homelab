@@ -22,8 +22,7 @@ spec:
           memory: 4G
           type: MODRINTH
         extraEnv:
-          - name: MODRINTH_MODPACK
-            value: aged
+          - MODRINTH_MODPACK: aged
         persistence:
           dataDir:
             enabled: true
