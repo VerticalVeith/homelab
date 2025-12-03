@@ -21,8 +21,9 @@ spec:
           eula: true
           memory: 4G
           type: MODRINTH
+          difficulty: hard
         extraEnv:
-          - MODRINTH_MODPACK: aged
+          MODRINTH_MODPACK: aged
         persistence:
           dataDir:
             enabled: true

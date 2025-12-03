@@ -1,0 +1,1 @@
+see https://github.com/itzg/minecraft-server-charts/tree/master/charts/minecraft
