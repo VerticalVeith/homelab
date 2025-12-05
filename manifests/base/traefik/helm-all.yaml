@@ -14,13 +14,6 @@ spec:
     targetRevision: 37.3.0
     helm:
       valuesObject:
-        entryPoints:
-          web:
-            address: ":80"
-          websecure:
-            address: ":443"
-          minecraft:
-            address: ":25565"
         ports:
           web:
             redirections:
@@ -28,6 +21,8 @@ spec:
                 to: websecure
                 scheme: https
                 permanent: true
+          minecraft:
+            address: ":25565"
         ingressRoute:
           dashboard:
             enabled: true
