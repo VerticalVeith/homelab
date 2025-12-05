@@ -23,7 +23,9 @@ spec:
                 permanent: true
           minecraft:
             port: 25565
-            address: ":25565"
+            expose:
+              default: true
+              exposedPort: 25565
         ingressRoute:
           dashboard:
             enabled: true
