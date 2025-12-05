@@ -34,7 +34,7 @@ spec:
               entryPoints:
                 - minecraft
               routes:
-                - match: HostSNI(`homies.buergerhoff.lan`, `homies.buergerhoff.com`)
+                - match: HostSNI(`homies.buergerhoff.com`)
                   services:
                     - name: minecraft-homies
                       port: 25565
