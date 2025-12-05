@@ -21,6 +21,11 @@ spec:
           eula: true
           memory: 4G
           difficulty: hard
+          extraServiceSpec:
+            ipFamilyPolicy: DualStack
+            ipFamilies:
+              - IPv4
+              - IPv6
         persistence:
           dataDir:
             enabled: true
