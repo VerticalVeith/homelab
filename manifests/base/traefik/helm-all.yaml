@@ -19,6 +19,8 @@ spec:
             address: ":80"
           websecure:
             address: ":443"
+          minecraft:
+            address: ":25565"
         ports:
           web:
             redirections:
@@ -29,7 +31,7 @@ spec:
         ingressRoute:
           dashboard:
             enabled: true
-            matchRule: Host(`traefik.buergerhoff.local`)
+            matchRule: Host(`traefik.buergerhoff.lan`)
             entryPoints: ["websecure"]
         additionalArguments:
           - "--api.insecure=true"
