@@ -22,7 +22,7 @@ spec:
                 scheme: https
                 permanent: true
           minecraft:
-            address: ":25565"
+            port: 25565
         ingressRoute:
           dashboard:
             enabled: true
