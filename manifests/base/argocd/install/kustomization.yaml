@@ -6,7 +6,7 @@ namespace: argocd
 resources:
   - namespace.yaml
   - priority-class.yaml
-  - https://github.com/argoproj/argo-cd//manifests/core-install?ref=stable
+  - https://github.com/argoproj/argo-cd/manifests/core-install?ref=stable
   - repositories.yaml
   
 patches:
