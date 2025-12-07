@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://itzg.github.io/minecraft-server-charts
+    repoURL: itzg/mc-router
     chart: mc-router
     targetRevision: 5.0.0
     helm:
