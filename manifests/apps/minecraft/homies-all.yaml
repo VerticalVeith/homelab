@@ -17,6 +17,8 @@ spec:
         resources:
           requests:
             memory: 2048Mi
+        serviceAnnotations:
+          "mc-router.itzg.me/externalServerName": "homies.buergerhoff.com"
         minecraftServer:
           eula: true
           memory: 4G
