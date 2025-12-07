@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: any
+metadata:
+  labels:
+    component: controller
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+        node-role.kubernetes.io/control-plane: "true"
