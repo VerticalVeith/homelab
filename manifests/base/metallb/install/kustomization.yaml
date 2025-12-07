@@ -13,9 +13,6 @@ patches:
   - path: overlays/patch-priority-class.yaml
     target:
       kind: StatefulSet
-  - patch: |
-      op: add
-      path: /spec/template/spec/0/nodeSelector/\"node-role.kubernetes.io/control-plane\"
-      value: "true"
-    target:
-      kind: Deployment
+
+patchesStrategicMerge:
+  - overlays/patch-node-selector.yaml
