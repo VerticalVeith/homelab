@@ -16,6 +16,9 @@ spec:
       valuesObject:
         minecraft:
           type: ClusterIP
+        services:
+          extraServiceSpec:
+            ipFamilyPolicy: RequireDualStack
         extraDeploy:
           - apiVersion: traefik.io/v1alpha1
             kind: IngressRouteTCP
