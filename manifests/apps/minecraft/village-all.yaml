@@ -18,7 +18,7 @@ spec:
           requests:
             memory: 2048Mi
         serviceAnnotations:
-          "mc-router.itzg.me/externalServerName": "village.buergerhoff.com"
+          "mc-router.itzg.me/externalServerName": "village.buergerhoff.com,village.buergerhoff.lan"
         minecraftServer:
           eula: true
           memory: 4G
