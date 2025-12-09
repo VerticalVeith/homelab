@@ -24,12 +24,12 @@ spec:
           memory: 4G
           difficulty: hard
           type: AUTO_CURSEFORGE
-        autoCurseForge:
-          apiKey:
-            existingSecret: "curseforge"
-            secretKey: cf-api-key
-          pageUrl: "https://www.curseforge.com/minecraft/modpacks/life-in-the-village-4"
-          fileId: "7279460"
+          autoCurseForge:
+            apiKey:
+              existingSecret: "curseforge"
+              secretKey: cf-api-key
+            pageUrl: "https://www.curseforge.com/minecraft/modpacks/life-in-the-village-4"
+            fileId: "7279460"
         persistence:
           dataDir:
             enabled: true
