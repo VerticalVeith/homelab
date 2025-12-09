@@ -6,5 +6,5 @@ Create Token at <https://console.curseforge.com/#/> and replace $ with $$.
 
 ```bash
 $key=''
-kubectl create secret generic -n minecraft curseforge --from-literal=usercf-api-key=$key
+kubectl create secret generic -n minecraft curseforge --from-literal=cf-api-key=$key
 ```
