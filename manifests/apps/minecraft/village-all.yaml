@@ -30,8 +30,8 @@ spec:
               secretKey: cf-api-key
             pageUrl: "https://www.curseforge.com/minecraft/modpacks/life-in-the-village-4"
             fileId: "7279460"
-        extraServiceSpec:
-          ipFamilyPolicy: RequireDualStack
+          extraServiceSpec:
+            ipFamilyPolicy: RequireDualStack
         persistence:
           dataDir:
             enabled: true
