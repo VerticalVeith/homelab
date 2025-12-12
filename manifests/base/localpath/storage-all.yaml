@@ -7,4 +7,4 @@ parameters:
   nodePath: /mnt/data
   pathPattern: "{{ .PVC.Namespace }}/{{ .PVC.Name }}"
 volumeBindingMode: WaitForFirstConsumer
-reclaimPolicy: Delete
+reclaimPolicy: Retain
