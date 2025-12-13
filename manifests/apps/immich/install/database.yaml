@@ -4,6 +4,9 @@ metadata:
   name: cluster-immich
 spec:
   instances: 1
+  postgresql:
+    shared_preload_libraries:
+      - "vchord.so"
   storage:
     size: 4Gi
     storageClass: local-data
@@ -18,5 +21,9 @@ spec:
   cluster:
     name: cluster-immich
   extensions:    
-    - name: vector
+    - name: vector 
+      ensure: absent    
+    - name: vchord 
+      ensure: present    
+    - name: earthdistance
       ensure: present    
