@@ -23,22 +23,22 @@ spec:
                     DB_HOSTNAME:
                       valueFrom:
                         secretKeyRef:
-                          name: immich-database-app
+                          name: cluster-immich-app
                           key: host
                     DB_USERNAME:
                       valueFrom:
                         secretKeyRef:
-                          name: immich-database-app
+                          name: cluster-immich-app
                           key: user
                     DB_PASSWORD:
                       valueFrom:
                         secretKeyRef:
-                          name: immich-database-app
+                          name: cluster-immich-app
                           key: password
                     DB_DATABASE_NAME:
                       valueFrom:
                         secretKeyRef:
-                          name: immich-database-app
+                          name: cluster-immich-app
                           key: dbname
         immich:
           persistence:
