@@ -1,0 +1,64 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: immich
+  namespace: argocd
+spec:
+  destination:
+    namespace: immich
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: immich
+    repoURL: ghcr.io/immich-app/immich-charts
+    targetRevision: 0.10.2 
+    helm:
+      valuesObject:
+        server:
+          controllers:
+            main:
+              containers:
+                main:
+                  env:
+                    DB_HOSTNAME:
+                      valueFrom:
+                        secretKeyRef:
+                          name: immich-database-app
+                          key: host
+                    DB_USERNAME:
+                      valueFrom:
+                        secretKeyRef:
+                          name: immich-database-app
+                          key: user
+                    DB_PASSWORD:
+                      valueFrom:
+                        secretKeyRef:
+                          name: immich-database-app
+                          key: password
+                    DB_DATABASE_NAME:
+                      valueFrom:
+                        secretKeyRef:
+                          name: immich-database-app
+                          key: dbname
+        immich:
+          persistence:
+            library:
+              existingClaim: immich-library-pvc
+        valkey:
+          enabled: true
+        extraDeploy:
+          - apiVersion: traefik.io/v1alpha1
+            kind: IngressRouteTCP
+            metadata:
+              name: '{{ template "mc-router.fullname" . }}'
+            spec:
+              entryPoints:
+                - minecraft
+              routes:
+                - match: HostSNI(`*`)
+                  services:
+                    - name: '{{ template "mc-router.fullname" . }}'
+                      port: 25565
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

@@ -3,15 +3,17 @@ kind: Application
 metadata:
   name: immich
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   destination:
     namespace: immich
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: immich
-    repoURL: ghcr.io/immich-app/immich-charts
-    targetRevision: 0.10.2
+    repoURL: https://github.com/VerticalVeith/homelab
+    targetRevision: HEAD
+    path: manifests/apps/immich/install
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
