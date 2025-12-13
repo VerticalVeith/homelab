@@ -47,10 +47,9 @@ spec:
           ipFamilies:
             - IPv4
             - IPv6
-    providers:
-      kubernetesCRD:
-        allowCrossNamespace: true
-
+        providers:
+          kubernetesCRD:
+            allowCrossNamespace: true
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
