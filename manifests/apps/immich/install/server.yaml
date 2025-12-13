@@ -1,0 +1,19 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cluster-immich
+spec:
+  instances: 1
+  storage:
+    size: 4Gi
+    storageClass: local-data
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: db-immich
+spec:
+  name: immich
+  owner: app
+  cluster:
+    name: cluster-immich
