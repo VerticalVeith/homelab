@@ -17,3 +17,6 @@ spec:
   owner: app
   cluster:
     name: cluster-immich
+  extensions:    
+    - name: vector
+      ensure: present    
