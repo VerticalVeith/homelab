@@ -20,9 +20,7 @@ spec:
   owner: app
   cluster:
     name: cluster-immich
-  extensions:    
-    - name: vector 
-      ensure: absent    
+  extensions:
     - name: vchord 
       ensure: present    
     - name: earthdistance
