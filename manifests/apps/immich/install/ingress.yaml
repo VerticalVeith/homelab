@@ -4,7 +4,7 @@ metadata:
   name: immich
 spec:
   entryPoints:
-    - https
+    - websecure
   routes:
     - match: HostSNI(`immich.buergerhoff.com`)
       services:
