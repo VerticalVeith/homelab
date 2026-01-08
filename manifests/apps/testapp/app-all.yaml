@@ -57,15 +57,15 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - kind: Rule
-    match: Host(`testapp.buergerhoff.com`)
-    services:
-    - kind: Service
-      name: testapp-nginx-svc
-      passHostHeader: true
-      port: 80
-      responseForwarding:
-        flushInterval: 1ms
-      scheme: http
+    - kind: Rule
+      match: Host(`testapp.buergerhoff.com`)
+      services:
+        - kind: Service
+          name: testapp-nginx-svc
+          passHostHeader: true
+          port: 80
+          responseForwarding:
+            flushInterval: 1ms
+          scheme: http
   tls:
     certResolver: main
