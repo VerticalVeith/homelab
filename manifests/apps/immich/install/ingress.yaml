@@ -1,5 +1,5 @@
 apiVersion: traefik.io/v1alpha1
-kind: IngressRouteTCP
+kind: IngressRoute
 metadata:
   name: immich
 spec:
@@ -9,4 +9,10 @@ spec:
     - match: Host(`immich.buergerhoff.com`)
       services:
         - name: immich-server
-          port: 2283
+          port: 2283       
+          passHostHeader: true
+          responseForwarding:
+            flushInterval: 1ms
+      scheme: http
+  tls:
+    certResolver: main
