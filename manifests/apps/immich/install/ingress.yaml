@@ -13,6 +13,6 @@ spec:
           passHostHeader: true
           responseForwarding:
             flushInterval: 1ms
-      scheme: http
+          scheme: http
   tls:
     certResolver: main
