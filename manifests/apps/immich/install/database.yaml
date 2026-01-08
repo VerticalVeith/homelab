@@ -7,7 +7,7 @@ spec:
   imageName: ghcr.io/tensorchord/cloudnative-vectorchord:18.0-0.5.3
   postgresql:
     shared_preload_libraries:
-      - "vchord.so"
+      - vchord
   storage:
     size: 4Gi
     storageClass: local-data
