@@ -11,7 +11,7 @@ spec:
   source:
     chart: immich
     repoURL: ghcr.io/immich-app/immich-charts
-    targetRevision: 0.10.2 
+    targetRevision: 0.10.3
     helm:
       valuesObject:
         server:
@@ -19,6 +19,8 @@ spec:
             main:
               containers:
                 main:
+                  image:
+                    tag: v2.4.1
                   env:
                     DB_HOSTNAME:
                       valueFrom:
