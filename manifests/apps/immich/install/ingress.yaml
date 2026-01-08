@@ -6,7 +6,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: HostSNI(`immich.buergerhoff.com`)
+    - match: Host(`immich.buergerhoff.com`)
       services:
         - name: immich-server
           port: 2283
