@@ -7,7 +7,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`immich.buergerhoff.com`)
+      match: Host(`gallery.buergerhoff.com`)
       services:
         - kind: Service
           name: immich-server
