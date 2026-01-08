@@ -11,24 +11,21 @@ spec:
   storage:
     size: 4Gi
     storageClass: local-data
+
+  managed:
+    roles:
+      - name: immich
+        superuser: true
+        login: true
+
   bootstrap:
-    postInitApplicationSQL:
-      - CREATE EXTENSION IF NOT EXISTS "vector";
-      - CREATE EXTENSION IF NOT EXISTS "vectors";
-      - CREATE EXTENSION IF NOT EXISTS "cube";
-      - CREATE EXTENSION IF NOT EXISTS "earthdistance";
----
-apiVersion: postgresql.cnpg.io/v1
-kind: Database
-metadata:
-  name: db-immich
-spec:
-  name: immich
-  owner: app
-  cluster:
-    name: cluster-immich
-  extensions:
-    - name: vchord
-      ensure: present    
-    - name: earthdistance
-      ensure: present    
+    initdb:
+      database: immich
+      owner: immich
+      secret:
+        name: immich-postgres-user
+      postInitSQL:
+        - CREATE EXTENSION IF NOT EXISTS "vector";
+        - CREATE EXTENSION IF NOT EXISTS "vchord" CASCADE;
+        - CREATE EXTENSION IF NOT EXISTS "cube" CASCADE;
+        - CREATE EXTENSION IF NOT EXISTS "earthdistance" CASCADE;
