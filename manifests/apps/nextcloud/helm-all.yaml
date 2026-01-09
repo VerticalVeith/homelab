@@ -27,6 +27,7 @@ spec:
                     2 => 'cloud.buergerhoff.lan',
                     3 => 'localhost',
                     4 => 'nextcloud',
+                    5 => 'nextcloud.kube.home',
                   ),
               );
         service:
