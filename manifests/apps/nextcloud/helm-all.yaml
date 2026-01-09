@@ -1,0 +1,82 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nextcloud
+  namespace: argocd
+spec:
+  destination:
+    namespace: nextcloud
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: nextcloud
+    repoURL: https://nextcloud.github.io/helm/
+    targetRevision: 8.7.0
+    helm:
+      valuesObject:
+        service:
+          annotations:
+            traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
+
+        internalDatabase:
+          enabled: false
+
+        externalDatabase:        
+          enabled: true
+          type: postgresql
+          existingSecret:
+            enabled: true
+            secretName: cluster-nextcloud-app
+            usernameKey: user
+            passwordKey: password
+            hostKey: host
+            databaseKey: dbname
+
+        persistence:
+          enabled: true
+          storageClass: local-data
+          size: 24Gi
+          nextcloudData:
+            enabled: true
+            storageClass: local-data
+            accessMode: ReadWriteOnce
+          nextcloudData.size: 8Gi
+        extraManifests:
+          - apiVersion: traefik.io/v1alpha1
+            kind: IngressRoute
+            metadata:
+              name: nextcloud
+            spec:
+              entryPoints:
+                - websecure
+              routes:
+                - kind: Rule
+                  match: Host(`cloud.buergerhoff.com`)
+                  services:
+                    - kind: Service
+                      name: nextcloud
+                      port: 8080
+                      passHostHeader: true
+                      responseForwarding:
+                        flushInterval: 1ms
+                      scheme: http
+              tls:
+                certResolver: main
+
+          - apiVersion: postgresql.cnpg.io/v1
+            kind: Cluster
+            metadata:
+              name: cluster-nextcloud
+            spec:
+              instances: 1
+              storage:
+                size: 4Gi
+                storageClass: local-data
+
+              bootstrap:
+                initdb:
+                  database: nextcloud
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
