@@ -35,6 +35,14 @@ spec:
           # Required for accessing USB devices
           privileged: true
 
+        configuration:
+          enabled: true
+          # Force init will merge the current configuration file with the default configuration on every start
+          # This is useful when you want to ensure that the configuration file is always up to date
+          forceInit: true
+          trusted_proxies:
+            - 10.42.0.0/16
+
         ingress:
           enabled: true
           className: traefik
@@ -43,13 +51,12 @@ spec:
             kubernetes.io/tls-acme: "true"
             traefik.ingress.kubernetes.io/router.entrypoints: websecure
             traefik.ingress.kubernetes.io/router.tls: "true"
+            traefik.ingress.kubernetes.io/router.tls.certresolver: main
           hosts:
             - host: home.buergerhoff.com
               paths:
                 - path: /
                   pathType: ImplementationSpecific
-          tls:
-            - certResolver: main
 
   syncPolicy:
     syncOptions:
