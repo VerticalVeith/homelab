@@ -38,7 +38,7 @@ spec:
                 - path: /
                   pathType: ImplementationSpecific
           tls:
-            certResolver: main
+            - certResolver: main
 
   syncPolicy:
     syncOptions:
