@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: home-assistant
+  namespace: argocd
+spec:
+  destination:
+    namespace: home-assistant
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: home-assistant
+    repoURL: http://pajikos.github.io/home-assistant-helm-chart/
+    targetRevision: 8.7.0
+    helm:
+      valuesObject:
+        additionalMounts:
+          - mountPath: /dev/ttyUSB0
+            name: usb
+
+        persistence:
+          enabled: true
+          accessMode: ReadWriteOnce
+          size: 5Gi
+          storageClass: local-data
+
+        ingress:
+          enabled: true
+          className: traefik
+          annotations:
+            kubernetes.io/ingress.class: traefik
+            kubernetes.io/tls-acme: "true"
+            traefik.ingress.kubernetes.io/router.entrypoints: websecure
+            traefik.ingress.kubernetes.io/router.tls: "true"
+          hosts:
+            - host: home.buergerhoff.com
+              paths:
+                - path: /
+                  pathType: ImplementationSpecific
+          tls:
+            certResolver: main
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
