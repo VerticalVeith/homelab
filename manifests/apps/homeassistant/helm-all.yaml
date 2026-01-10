@@ -14,9 +14,16 @@ spec:
     targetRevision: 0.3.38
     helm:
       valuesObject:
+        additionalVolumes:
+          - hostPath:
+              path: >-
+                /dev/serial/by-id/usb-Itead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_V2_ec0cf9e65a53ef119fef24e0174bec31-if00-port0
+              type: CharDevice
+            name: zigbee
+
         additionalMounts:
           - mountPath: /dev/ttyUSB0
-            name: usb
+            name: zigbee
 
         persistence:
           enabled: true
