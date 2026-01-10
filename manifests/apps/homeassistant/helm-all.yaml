@@ -24,6 +24,10 @@ spec:
           size: 5Gi
           storageClass: local-data
 
+        securityContext:
+          # Required for accessing USB devices
+          privileged: true
+
         ingress:
           enabled: true
           className: traefik
