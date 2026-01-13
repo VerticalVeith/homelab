@@ -9,10 +9,11 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/manifests/apps/immich/helm-all.yaml"
+        "/manifests/apps/immich/helm-all.yaml",
+        "/(^|/)manifests/immich/helm-all\\.ya?ml$/"
       ],
       "matchStrings": [
-        "tag:\\s*(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+        "#\\s*renovate: tag:\\s*[\"']?(?<currentValue>[\\w+\\.\\-]*)"      
       ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "immich-app/immich",
