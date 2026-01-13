@@ -9,7 +9,6 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/manifests/apps/immich/helm-all.yaml",
         "/(^|/)manifests/immich/helm-all\\.ya?ml$/"
       ],
       "matchStrings": [
