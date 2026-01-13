@@ -25,3 +25,4 @@ jobs:
           token: '${{ steps.get_token.outputs.token }}'       
         env:
           RENOVATE_AUTODISCOVER: true
+          RENOVATE_ONBOARDING: true
