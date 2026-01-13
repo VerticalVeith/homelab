@@ -22,4 +22,6 @@ jobs:
         uses: renovatebot/github-action@v44.2.3
         with:
           configurationFile: renovate-config.js
-          token: '${{ steps.get_token.outputs.token }}'
+          token: '${{ steps.get_token.outputs.token }}'       
+        env:
+          RENOVATE_AUTODISCOVER: true
