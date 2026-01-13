@@ -1,0 +1,14 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "onboarding": false,
+  "autodiscover": true,
+  "labels": [
+    "dependencies"
+  ],
+  "schedule": [
+    "before 3am on monday"
+  ]
+}
