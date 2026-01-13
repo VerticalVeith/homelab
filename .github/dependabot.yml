@@ -6,10 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: docker
-    directory: "/manifests/"
+    directory: "/manifests/**/*"
     schedule:
       interval: "weekly"
   - package-ecosystem: helm
-    directory: "/manifests/"
+    directory: "/manifests/**/*"
     schedule:
       interval: "weekly"
