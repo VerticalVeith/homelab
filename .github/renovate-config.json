@@ -5,6 +5,7 @@
   ],
   "onboarding": false,
   "autodiscover": true,
+  "prCreation": "immediate",
   "labels": [
     "dependencies"
   ],
