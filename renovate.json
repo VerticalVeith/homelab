@@ -9,7 +9,7 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/(^|/)manifests/immich/helm-all\\.ya?ml$/"
+        "/(^|/)manifests/apps/immich/helm-all\\.ya?ml$/"
       ],
       "matchStrings": [
         "#\\s*renovate: tag:\\s*[\"']?(?<currentValue>[\\w+\\.\\-]*)"      
