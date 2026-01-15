@@ -12,7 +12,7 @@
         "/manifests/apps/immich/helm-all\\.yaml/"
       ],
       "matchStrings": [
-        "#\\s*renovate: tag:\\s*[\"']?(?<currentValue>[\\w+\\.\\-]*)"      
+        "tag:\\s*[\"']?(?<currentValue>[\\w+\\.\\-]*)"      
       ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "immich-app/immich",
