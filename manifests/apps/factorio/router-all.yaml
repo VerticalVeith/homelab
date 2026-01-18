@@ -8,5 +8,5 @@ spec:
     - factorio
   routes:
     - services:
-        - name: factorio-service
+        - name: factorio-factorio-server-charts
           port: 31497
