@@ -25,12 +25,13 @@ spec:
           port: 34197
 
         service:
-          type: NodePort
+          type: ClusterIP
           port: 34197
           ipFamilyPolicy: RequireDualStack
           ipFamilies:
             - IPv4
             - IPv6
+
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
