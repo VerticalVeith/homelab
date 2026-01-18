@@ -28,6 +28,7 @@ spec:
               exposedPort: 25565
           factorio:
             port: 31497
+            protocol: UDP
             expose:
               default: true
               exposedPort: 31497
