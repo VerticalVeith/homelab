@@ -23,15 +23,9 @@ spec:
                 permanent: true
           minecraft:
             port: 25565
-            expose:
-              default: true
-              exposedPort: 25565
           factorio:
-            port: 31497
+            port: 34197 
             protocol: UDP
-            expose:
-              default: true
-              exposedPort: 31497
         ingressRoute:
           dashboard:
             enabled: true

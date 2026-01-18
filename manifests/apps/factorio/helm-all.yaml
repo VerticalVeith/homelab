@@ -23,9 +23,10 @@ spec:
           enable_space_age: true
           require_user_verification: true
 
-        service: 
+        service:
           type: ClusterIP
-          ipFamilyPolicy : RequireDualStack
+          port: 34197
+          ipFamilyPolicy: RequireDualStack
           ipFamilies:
             - IPv4
             - IPv6
