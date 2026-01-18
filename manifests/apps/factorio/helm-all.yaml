@@ -22,15 +22,15 @@ spec:
         factorioServer:
           enable_space_age: true
           require_user_verification: true
-          port: 34197
+          # port: 34197
 
-        service:
-          type: ClusterIP
-          port: 34197
-          ipFamilyPolicy: RequireDualStack
-          ipFamilies:
-            - IPv4
-            - IPv6
+        # service:
+        #   type: ClusterIP
+        #   port: 34197
+        #   ipFamilyPolicy: RequireDualStack
+        #   ipFamilies:
+        #     - IPv4
+        #     - IPv6
 
   syncPolicy:
     syncOptions:

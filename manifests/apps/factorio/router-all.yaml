@@ -9,4 +9,4 @@ spec:
   routes:
     - services:
         - name: factorio-factorio-server-charts
-          port: 34197
+          port: 31497
