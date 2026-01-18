@@ -1,0 +1,12 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteUDP
+metadata:
+  name: factorio-router
+  namespace: factorio
+spec:
+  entryPoints:
+    - factorio
+  routes:
+    - services:
+        - name: factorio-service
+          port: 31497
