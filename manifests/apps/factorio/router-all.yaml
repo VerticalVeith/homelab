@@ -9,5 +9,5 @@ spec:
   routes:
     - services:
         - name: factorio-factorio-server-charts
-          port: 31497
+          port: factorio
           nodePortLB: true
