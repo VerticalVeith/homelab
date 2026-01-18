@@ -9,4 +9,4 @@ spec:
   routes:
     - services:
         - name: factorio-factorio-server-charts
-          port: 31497
+          nativeLB: true
