@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: factorio
+  namespace: argocd
+spec:
+  destination:
+    namespace: factorio
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: factorio
+    repoURL: https://sqljames.github.io/factorio-server-charts
+    targetRevision: 0.3.39
+    helm:
+      valuesObject:
+        persistence:
+          storageClassName: local-data
+          enabled: true
+          accessMode: ReadWriteOnce
+
+        factorioServer:
+          enable_space_age: true
+          require_user_verification: true
+
+        service: 
+          type: LoadBalancer
+          ipFamilyPolicy : RequireDualStack
+          annotations:
+            kubernetes.io/ingress.class: traefik
+            kubernetes.io/tls-acme: "true"
+            traefik.ingress.kubernetes.io/router.entrypoints: factorio
+
+        rcon:
+          external: false
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

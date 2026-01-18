@@ -26,6 +26,11 @@ spec:
             expose:
               default: true
               exposedPort: 25565
+          factorio:
+            port: 31497
+            expose:
+              default: true
+              exposedPort: 31497
         ingressRoute:
           dashboard:
             enabled: true
