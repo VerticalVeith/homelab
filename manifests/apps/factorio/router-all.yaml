@@ -10,5 +10,5 @@ spec:
     - services:
         - name: factorio-factorio-server-charts
           port: 34197
-          nativeLB: false
+          nativeLB: true
           nodePortLB: false
