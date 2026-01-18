@@ -10,3 +10,4 @@ spec:
     - services:
         - name: factorio-factorio-server-charts
           port: 31497
+          nodePortLB: true
