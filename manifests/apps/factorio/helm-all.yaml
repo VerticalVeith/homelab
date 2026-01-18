@@ -24,11 +24,13 @@ spec:
           require_user_verification: true
 
         service: 
-          type: LoadBalancer
+          type: ClusterIP
           ipFamilyPolicy : RequireDualStack
+          ipFamilies:
+            - IPv4
+            - IPv6
           annotations:
             kubernetes.io/ingress.class: traefik
-            kubernetes.io/tls-acme: "true"
             traefik.ingress.kubernetes.io/router.entrypoints: factorio
 
         rcon:
