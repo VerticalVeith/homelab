@@ -22,6 +22,7 @@ spec:
         factorioServer:
           enable_space_age: true
           require_user_verification: true
+          port: 34197
 
         service:
           type: ClusterIP
