@@ -5,11 +5,10 @@
   ],
   "onboarding": false,
   "autodiscover": true,
+  "dependencyDashboardApproval": false,
+  "dependencyDashboardAutoclose": true
   "prCreation": "immediate",
   "labels": [
     "dependencies"
-  ],
-  "schedule": [
-    "before 3am on monday"
   ]
 }
