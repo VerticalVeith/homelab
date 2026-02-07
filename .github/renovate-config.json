@@ -6,7 +6,7 @@
   "onboarding": false,
   "autodiscover": true,
   "dependencyDashboardApproval": false,
-  "dependencyDashboardAutoclose": true
+  "dependencyDashboardAutoclose": true,
   "prCreation": "immediate",
   "labels": [
     "dependencies"
