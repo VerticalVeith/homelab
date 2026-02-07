@@ -1,7 +1,7 @@
 name: Renovate
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: '0 0 * * 3,6'
   workflow_dispatch: {}
 jobs:
   renovate:
@@ -25,5 +25,3 @@ jobs:
         with:
           configurationFile: .github/renovate-config.json
           token: '${{ steps.get_token.outputs.token }}'
-        env:
-          LOG_LEVEL: debug
