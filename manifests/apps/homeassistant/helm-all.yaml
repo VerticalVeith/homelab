@@ -11,7 +11,7 @@ spec:
   source:
     chart: home-assistant
     repoURL: http://pajikos.github.io/home-assistant-helm-chart/
-    targetRevision: 0.3.41
+    targetRevision: 0.3.43
     helm:
       valuesObject:
         additionalVolumes:
