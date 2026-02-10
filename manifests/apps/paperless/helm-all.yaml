@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: oci://ghcr.io/gabe565/charts/paperless-ngx
     name: paperless-ngx
-    targetRevision: 0.1.0
+    targetRevision: 0.24.1
     helm:
       valuesObject:
         persistence:
