@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: paperless
+  namespace: argocd
+spec:
+  destination:
+    namespace: paperless
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: oci://ghcr.io/gabe565/charts/paperless-ngx
+    name: paperless-ngx
+    targetRevision: 0.1.0
+    helm:
+      valuesObject:
+        persistence:
+          data:
+            storageClass: local-data
+        ingress:
+          main:
+            enabled: true
+            className: traefik
+            annotations:
+              kubernetes.io/ingress.class: traefik
+              kubernetes.io/tls-acme: "true"
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              traefik.ingress.kubernetes.io/router.tls: "true"
+              traefik.ingress.kubernetes.io/router.tls.certresolver: main
+            hosts:
+              - host: dns.buergerhoff.com
+                paths:
+                  - path: /
+                    pathType: ImplementationSpecific
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
