@@ -23,9 +23,9 @@ spec:
             repository: bitnamilegacy/redis
         env:
           TZ: "Europe/Berlin"
-          PAPERLESS_URL: https://dns.buergerhoff.com
-          PAPERLESS_ALLOWED_HOSTS: dns.buergerhoff.com
-          PAPERLESS_CSRF_TRUSTED_ORIGINS: https://dns.buergerhoff.com
+          PAPERLESS_URL: https://dms.buergerhoff.com
+          PAPERLESS_ALLOWED_HOSTS: dms.buergerhoff.com
+          PAPERLESS_CSRF_TRUSTED_ORIGINS: https://dms.buergerhoff.com
 
         persistence:
           data:
@@ -55,7 +55,7 @@ spec:
               traefik.ingress.kubernetes.io/router.tls: "true"
               traefik.ingress.kubernetes.io/router.tls.certresolver: main
             hosts:
-              - host: dns.buergerhoff.com
+              - host: dms.buergerhoff.com
                 paths:
                   - path: /
                     pathType: ImplementationSpecific
