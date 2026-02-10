@@ -22,5 +22,6 @@ spec:
         - ApplyOutOfSyncOnly=true
         - RespectIgnoreDifferences=true
       automated:
+        enabled: true
         prune: true
         selfHeal: true
