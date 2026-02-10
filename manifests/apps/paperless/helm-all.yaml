@@ -19,7 +19,7 @@ spec:
             allowInsecureImages: true
         redis:
           image:
-            repository: valkey/valkey
+            tag: latest
         persistence:
           data:
             storageClass: local-data
