@@ -18,6 +18,15 @@ spec:
           data:
             storageClass: local-data
             accessMode: ReadWriteOnce
+          media:
+            storageClass: local-data
+            accessMode: ReadWriteOnce
+          export:
+            storageClass: local-data
+            accessMode: ReadWriteOnce
+          consumer:
+            storageClass: local-data
+            accessMode: ReadWriteOnce
         ingress:
           main:
             enabled: true
