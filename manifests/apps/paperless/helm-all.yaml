@@ -18,15 +18,19 @@ spec:
           data:
             storageClass: local-data
             accessMode: ReadWriteOnce
+            size: 1Gi
           media:
             storageClass: local-data
             accessMode: ReadWriteOnce
+            size: 8Gi
           export:
             storageClass: local-data
             accessMode: ReadWriteOnce
+            size: 1Gi
           consume:
             storageClass: local-data
             accessMode: ReadWriteOnce
+            size: 4Gi
         ingress:
           main:
             enabled: true
