@@ -16,6 +16,7 @@ spec:
       valuesObject:
         redis:
           image:
+            repository: bitnami/redis
             tag: latest
         persistence:
           data:
