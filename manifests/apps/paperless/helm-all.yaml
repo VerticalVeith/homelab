@@ -24,7 +24,7 @@ spec:
           export:
             storageClass: local-data
             accessMode: ReadWriteOnce
-          consumer:
+          consume:
             storageClass: local-data
             accessMode: ReadWriteOnce
         ingress:
