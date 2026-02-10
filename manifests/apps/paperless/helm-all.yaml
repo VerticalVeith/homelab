@@ -14,10 +14,14 @@ spec:
     targetRevision: 0.24.1
     helm:
       valuesObject:
+        # see https://github.com/gabe565/charts/issues/783
+        global:
+          security:
+            allowInsecureImages: true
         redis:
           image:
-            repository: bitnami/redis
-            tag: latest
+            repository: bitnamilegacy/redis
+
         persistence:
           data:
             storageClass: local-data
