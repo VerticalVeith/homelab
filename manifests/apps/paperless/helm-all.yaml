@@ -21,6 +21,11 @@ spec:
         redis:
           image:
             repository: bitnamilegacy/redis
+        env:
+          TZ: "Europe/Berlin"
+          PAPERLESS_URL: https://dns.buergerhoff.com
+          PAPERLESS_ALLOWED_HOSTS: dns.buergerhoff.com
+          PAPERLESS_CSRF_TRUSTED_ORIGINS: https://dns.buergerhoff.com
 
         persistence:
           data:
