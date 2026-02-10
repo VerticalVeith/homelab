@@ -17,6 +17,7 @@ spec:
         persistence:
           data:
             storageClass: local-data
+            accessMode: ReadWriteOnce
         ingress:
           main:
             enabled: true
