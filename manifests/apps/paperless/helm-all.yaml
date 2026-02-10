@@ -14,9 +14,6 @@ spec:
     targetRevision: 0.24.1
     helm:
       valuesObject:
-        global:
-          security:
-            allowInsecureImages: true
         redis:
           image:
             tag: latest
