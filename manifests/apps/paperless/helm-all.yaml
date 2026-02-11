@@ -26,7 +26,11 @@ spec:
           PAPERLESS_URL: https://dms.buergerhoff.com
           PAPERLESS_ALLOWED_HOSTS: dms.buergerhoff.com
           PAPERLESS_CSRF_TRUSTED_ORIGINS: https://dms.buergerhoff.com
-
+          PAPERLESS_GMAIL_OAUTH_CLIENT_ID: 900448315889-2o824b0bgkk6frur1da0prijop0tra4l.apps.googleusercontent.com
+          PAPERLESS_GMAIL_OAUTH_CLIENT_SECRET:
+            secretKeyRef:
+              name: gmail
+              key: oauth-secret
         persistence:
           data:
             enabled: true
