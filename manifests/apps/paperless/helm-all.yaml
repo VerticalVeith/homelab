@@ -29,18 +29,22 @@ spec:
 
         persistence:
           data:
+            enabled: true
             storageClass: local-data
             accessMode: ReadWriteOnce
             size: 1Gi
           media:
+            enabled: true
             storageClass: local-data
             accessMode: ReadWriteOnce
             size: 8Gi
           export:
+            enabled: true
             storageClass: local-data
             accessMode: ReadWriteOnce
             size: 1Gi
           consume:
+            enabled: true
             storageClass: local-data
             accessMode: ReadWriteOnce
             size: 4Gi
