@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://itzg.github.io/minecraft-server-charts
     chart: minecraft
-    targetRevision: 5.1.1
+    targetRevision: 5.1.2
     helm:
       valuesObject:
         resources:
