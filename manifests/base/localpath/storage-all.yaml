@@ -5,6 +5,6 @@ metadata:
 provisioner: rancher.io/local-path
 parameters:
   nodePath: /mnt/data
-  pathPattern: "{{ .PVC.Namespace }}/{{ .PVC.Name }}/"
+  pathPattern: "{{ .PVC.Namespace }}/{{ .PVC.Name }}"
 volumeBindingMode: WaitForFirstConsumer
 reclaimPolicy: Retain
