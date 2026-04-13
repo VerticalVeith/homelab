@@ -91,6 +91,23 @@ spec:
                   storage: 4Gi
               storageClassName: local-data
 
+          # dummy pod to mount backup pvc
+          - apiVersion: v1
+            kind: Pod
+            metadata:
+              name: nextcloud-backup-pod
+            spec:
+              containers:
+                - name: backup
+                  image: busybox
+                  command: ["/bin/sh", "-c", "sleep 3600"]
+                  volumeMounts:
+                    - name: backup-volume
+                      mountPath: /backup
+              volumes:
+                - name: backup-volume
+                  persistentVolumeClaim:
+                    claimName: nextcloud-backup-pvc
 
           - apiVersion: postgresql.cnpg.io/v1
             kind: Cluster
