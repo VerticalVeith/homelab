@@ -9,8 +9,8 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: oci://ghcr.io/gabe565/charts/paperless-ngx
-    chart: paperless-ngx
+    repoURL: ghcr.io/gabe565/
+    chart: charts/paperless-ngx
     targetRevision: 0.24.1
     helm:
       valuesObject:
@@ -68,7 +68,9 @@ spec:
                   - path: /
                     pathType: ImplementationSpecific
   syncPolicy:
-    automated:
-      enabled: true
     syncOptions:
       - CreateNamespace=true
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true

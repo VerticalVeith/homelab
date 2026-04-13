@@ -17,6 +17,11 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
     managedNamespaceMetadata:
       annotations:
         argocd.argoproj.io/sync-options: Prune=false, Delete=false
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true

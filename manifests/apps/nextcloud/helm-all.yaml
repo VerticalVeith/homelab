@@ -79,6 +79,19 @@ spec:
               tls:
                 certResolver: main
 
+          - kind: PersistentVolumeClaim
+            apiVersion: v1
+            metadata:
+              name: nextcloud-backup-pvc
+            spec:
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 4Gi
+              storageClassName: local-data
+
+
           - apiVersion: postgresql.cnpg.io/v1
             kind: Cluster
             metadata:
@@ -91,8 +104,12 @@ spec:
 
               bootstrap:
                 initdb:
-                  database: nextcloud
+                  database: nextcloud  
 
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
