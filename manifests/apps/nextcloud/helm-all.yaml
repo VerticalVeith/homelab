@@ -102,9 +102,13 @@ spec:
                 size: 4Gi
                 storageClass: local-data
 
-              bootstrap:
-                initdb:
-                  database: nextcloud  
+                bootstrap:
+                  recovery:
+                    volumeSnapshots:
+                      storage:
+                        name: nextcloud-backup-pvc
+                        kind: PersistentVolumeClaim
+                        apiGroup: v1
 
   syncPolicy:
     syncOptions:
