@@ -90,17 +90,8 @@ spec:
                 storageClass: local-data
 
               bootstrap:
-                pg_basebackup:
-                  source: source-db
-
-              externalClusters:
-                - name: source-db
-                  connectionParameters:
-                    host: 192.168.12.31
-                    user: streaming_replica
-                  password:
-                    name: source-db-replica-user
-                    key: password
+                initdb:
+                  database: nextcloud
 
   syncPolicy:
     syncOptions:
