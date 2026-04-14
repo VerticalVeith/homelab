@@ -91,24 +91,6 @@ spec:
                   storage: 4Gi
               storageClassName: local-data
 
-          # dummy pod to mount backup pvc
-          - apiVersion: v1
-            kind: Pod
-            metadata:
-              name: nextcloud-backup-pod
-            spec:
-              containers:
-                - name: backup
-                  image: busybox
-                  command: ["/bin/sh", "-c", "sleep 3600"]
-                  volumeMounts:
-                    - name: backup-volume
-                      mountPath: /backup
-              volumes:
-                - name: backup-volume
-                  persistentVolumeClaim:
-                    claimName: nextcloud-backup-pvc
-
           - apiVersion: postgresql.cnpg.io/v1
             kind: Cluster
             metadata:
@@ -119,13 +101,18 @@ spec:
                 size: 4Gi
                 storageClass: local-data
 
-                bootstrap:
-                  recovery:
-                    volumeSnapshots:
-                      storage:
-                        name: nextcloud-backup-pvc
-                        kind: PersistentVolumeClaim
-                        apiGroup: v1
+              bootstrap:
+                pg_basebackup:
+                  source: source-db
+
+              externalClusters:
+                - name: source-db
+                  connectionParameters:
+                    host: 192.168.12.31
+                    user: streaming_replica
+                  password:
+                    name: source-db-replica-user
+                    key: password
 
   syncPolicy:
     syncOptions:
@@ -134,3 +121,6 @@ spec:
       enabled: true
       prune: true
       selfHeal: true
+      
+      
+docker run --name database  -p 5432:5432   -e POSTGRES_USER=nextcloudroot   -e POSTGRES_PASSWORD=D0TpssbYbvZLyeIJ6RvvgR8F08dKRfpXD2T5Glhplm0pxqXGYAUnBSgP3H8ZLNHY  -e POSTGRES_DB=nextcloud   -v ./pgdata/:/var/lib/postgresql/data/   postgres:16
