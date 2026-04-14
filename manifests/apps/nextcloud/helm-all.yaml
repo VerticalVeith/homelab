@@ -14,25 +14,31 @@ spec:
     targetRevision: 9.0.5
     helm:
       valuesObject:
-        # nextcloud:
-        #   configs:
-        #     proxy.config.php: |-
-        #       <?php
-        #       $CONFIG = array (
-        #         'overwrite.cli.url' => 'https://cloud.buergerhoff.com',
-        #         'overwriteprotocol' => 'https',
-        #         'trusted_domains' => array (
-        #             0 => '127.0.0.1',
-        #             1 => 'cloud.buergerhoff.com',
-        #             2 => 'cloud.buergerhoff.lan',
-        #             3 => 'localhost',
-        #             4 => 'nextcloud',
-        #             5 => 'nextcloud.kube.home',
-        #           ),
-        #       );
+        nextcloud:
+          configs:
+            proxy.config.php: |-
+              <?php
+              $CONFIG = array (
+                'overwrite.cli.url' => 'https://cloud.buergerhoff.com',
+                'overwriteprotocol' => 'https',
+                'trusted_domains' => array (
+                    0 => '127.0.0.1',
+                    1 => 'cloud.buergerhoff.com',
+                    2 => 'cloud.buergerhoff.lan',
+                    3 => 'localhost',
+                    4 => 'nextcloud',
+                    5 => 'nextcloud.kube.home',
+                  ),
+              );
         service:
           annotations:
             traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
+
+        startupProbe:
+          enabled: true
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          failureThreshold: 120
 
         internalDatabase:
           enabled: false
