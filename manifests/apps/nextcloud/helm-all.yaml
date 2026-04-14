@@ -121,6 +121,3 @@ spec:
       enabled: true
       prune: true
       selfHeal: true
-      
-      
-docker run --name database  -p 5432:5432   -e POSTGRES_USER=nextcloudroot   -e POSTGRES_PASSWORD=D0TpssbYbvZLyeIJ6RvvgR8F08dKRfpXD2T5Glhplm0pxqXGYAUnBSgP3H8ZLNHY  -e POSTGRES_DB=nextcloud   -v ./pgdata/:/var/lib/postgresql/data/   postgres:16
