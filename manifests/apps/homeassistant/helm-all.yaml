@@ -25,6 +25,11 @@ spec:
           - mountPath: /dev/ttyUSB0
             name: zigbee
 
+        additionalPorts:
+          - name: govee
+            containerPort: 4001
+            protocol: UDP
+
         persistence:
           enabled: true
           accessMode: ReadWriteOnce
