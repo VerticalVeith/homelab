@@ -26,13 +26,13 @@ spec:
             name: zigbee
 
         additionalPorts:
-          - name: goveeD
+          - name: govee-d
             containerPort: 4001
             protocol: UDP
-          - name: goveeI
+          - name: govee-i
             containerPort: 4002
             protocol: UDP
-          - name: goveeC
+          - name: govee-c
             containerPort: 4003
             protocol: UDP
 
