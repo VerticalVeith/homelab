@@ -25,6 +25,7 @@ spec:
       match: Host(`home.buergerhoff.com`)
       services:
         - kind: Service
+          namespace: home-assistant
           name: homeassistant-vm
           port: 8123
           passHostHeader: true
