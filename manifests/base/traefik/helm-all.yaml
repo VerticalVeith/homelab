@@ -46,6 +46,7 @@ spec:
         providers:
           kubernetesCRD:
             allowCrossNamespace: true
+            allowExternalNameServices: true
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

@@ -158,7 +158,7 @@ Getting the image from the [home assistant website](https://www.home-assistant.i
 Creating the VM:
 
     ```bash
-    qm create 100 --storage local-lvm --sshkeys $publicKeyPath --onboot true --bios ovmf --keyboard de --machine q35 --cores 2 --memory 2048 --name "homeassistant" --description "The Home Assistant VM" --scsihw virtio-scsi-single
+    qm create 100 --storage local-lvm --sshkeys $publicKeyPath --onboot true --bios ovmf --keyboard de --machine q35 --cores 2 --memory 2048 --name "homeassistant" --description "The Home Assistant VM" --net0 virtio=BC:24:11:A8:77:F5,bridge=vmbr0,firewall=1 --scsihw virtio-scsi-single
     qm importdisk 100 $image local-lvm
     qm set 100 --scsi0 local-lvm:vm-100-disk-0,discard=on --boot order=scsi0
     ```
