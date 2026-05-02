@@ -145,6 +145,24 @@ This repo contains all the GitOps manifest files. ArgoCD can manage itself, but 
     kubectl apply -f https://raw.githubusercontent.com/VerticalVeith/homelab/refs/heads/main/manifests/argocd.yaml
     ```
 
+### Setting up the Home Assistant VM
+
+Getting the image from the [home assistant website](https://www.home-assistant.io/installation/alternative):
+
+    ```bash
+    image="haos_ova-17.2.qcow2"
+    wget https://github.com/home-assistant/operating-system/releases/download/17.2/$image.xz
+    unxz $image.xz
+    ```
+
+Creating the VM:
+
+    ```bash
+    qm create 100 --storage local-lvm --sshkeys $publicKeyPath --onboot true --bios ovmf --keyboard de --machine q35 --cores 2 --memory 2048 --name "homeassistant" --description "The Home Assistant VM" --scsihw virtio-scsi-single
+    qm importdisk 100 $image local-lvm
+    qm set 100 --scsi0 local-lvm:vm-100-disk-0,discard=on --boot order=scsi0
+    ```
+
 ## Issues
 
 rrdcache broken: `mv /var/lib/rrdcached/db/pve-node-9.0/pve3 /var/lib/rrdcached/db/pve-node-9.0/pve3.bak`
