@@ -17,6 +17,6 @@ spec:
   externalName: 192.168.12.218
   ports:
     - name: http
-      port: 8123
+      port: 8080
       targetPort: 8123
       protocol: TCP
