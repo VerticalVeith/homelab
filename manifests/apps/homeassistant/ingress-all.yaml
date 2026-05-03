@@ -14,7 +14,7 @@ metadata:
     traefik.ingress.kubernetes.io/response.forwarding.flushinterval: 1ms
 spec:
   type: ExternalName
-  externalName: 192.168.12.218
+  externalName: 192.168.12.250
   ports:
     - name: http
       port: 8080
