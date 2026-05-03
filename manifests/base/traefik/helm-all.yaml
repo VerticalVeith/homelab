@@ -44,7 +44,7 @@ spec:
             - IPv4
             - IPv6
         providers:
-          kubernetesingress:
+          kubernetesIngress:
             allowExternalNameServices: true
             allowEmptyServices: true
           kubernetesCRD:
