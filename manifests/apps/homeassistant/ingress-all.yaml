@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: homeassistant-vm
+  name: home-assistant
   namespace: home-assistant
 spec:
   type: ExternalName
@@ -15,7 +15,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: homeassistant
+  name: home-assistant
   namespace: home-assistant
 spec:
   entryPoints:
@@ -24,7 +24,7 @@ spec:
     - match: Host(`home.buergerhoff.com`)
       kind: Rule
       services:
-        - name: homeassistant-vm
+        - name: home-assistant
           port: 8123
   tls:
     certResolver: main
