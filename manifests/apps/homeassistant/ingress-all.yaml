@@ -3,18 +3,28 @@ kind: Service
 metadata:
   name: homeassistant-vm
   namespace: home-assistant
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.rule: 'Host(`home.buergerhoff.com`)'
-    kubernetes.io/tls-acme: "true"
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.tls.certresolver: main
 spec:
   type: ExternalName
   externalName: 192.168.12.250
   ports:
     - name: http
-      port: 8080
+      port: 8123
       targetPort: 8123
       protocol: TCP
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homeassistant
+  namespace: home-assistant
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`home.buergerhoff.com`)
+    kind: Rule
+    services:
+    - name: homeassistant-vm
+      port: 8123
+  tls:
+    certResolver: main
