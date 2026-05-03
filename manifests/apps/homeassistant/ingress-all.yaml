@@ -5,13 +5,11 @@ metadata:
   namespace: home-assistant
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.rule: 'Host(`home.buergerhoff.com`)'
+    kubernetes.io/tls-acme: "true"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.tls.certresolver: main
-    traefik.ingress.kubernetes.io/service.serversscheme: http
-    traefik.ingress.kubernetes.io/passhostheader: "true"
-    traefik.ingress.kubernetes.io/response.forwarding.flushinterval: 1ms
 spec:
   type: ExternalName
   externalName: 192.168.12.250
