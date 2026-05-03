@@ -44,8 +44,12 @@ spec:
             - IPv4
             - IPv6
         providers:
+          kubernetesingress:
+            allowExternalNameServices: true
+            allowEmptyServices: true
           kubernetesCRD:
             allowCrossNamespace: true
+            allowEmptyServices: true
             allowExternalNameServices: true
   syncPolicy:
     syncOptions:
