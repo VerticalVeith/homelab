@@ -38,7 +38,7 @@ spec:
                 entryPoint: web
         service:
           spec:
-            type: ClusterIP
+            type: LoadBalancer
           ipFamilyPolicy: RequireDualStack
           ipFamilies:
             - IPv4
