@@ -37,7 +37,8 @@ spec:
               httpChallenge:
                 entryPoint: web
         service:
-          type: NodePort
+          spec:
+            type: NodePort
           ipFamilyPolicy: RequireDualStack
           ipFamilies:
             - IPv4
