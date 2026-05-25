@@ -118,7 +118,7 @@ Some stuff is based on https://www.suse.com/c/rancher_blog/deploying_ha_k3s_exte
 - We are now ready to install the k3s server:
 
     ```bash
-    curl -sfL https://get.k3s.io | sh -s - server --disable servicelb --disable traefik --disable-network-policy --node-label topology.kubernetes.io/region=home --node-label topology.kubernetes.io/zone=buergerhoff --cluster-cidr=10.42.0.0/16,fd42::/48 --service-cidr=10.43.0.0/16,fd43::/112 --node-ip=192.168.12.215,2a04:4540:6513:1a00:be24:11ff:fe6b:4f1f --default-local-storage-path /mnt/data
+    curl -sfL https://get.k3s.io | sh -s - server --disable traefik --disable-network-policy --node-label topology.kubernetes.io/region=home --node-label topology.kubernetes.io/zone=buergerhoff --cluster-cidr=10.42.0.0/16,fd42::/48 --service-cidr=10.43.0.0/16,fd43::/112 --node-ip=192.168.12.215,2a04:4540:6513:1a00:be24:11ff:fe6b:4f1f --default-local-storage-path /mnt/data
     cat /var/lib/rancher/k3s/server/agent-token
     ```
 
