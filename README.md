@@ -60,7 +60,7 @@ Some stuff is based on https://www.suse.com/c/rancher_blog/deploying_ha_k3s_exte
     baseConfig="--onboot true --features nesting=1 --start true --ssh-public-keys $publicKeyPath --password $password --storage local-lvm"
 
     pct create 200 local:vztmpl/$debianTemplate --rootfs volume=local-lvm:25 --cores 2 --memory 2048 --swap 0 --hostname "k3s-server1" --description "The k3s server node" --ostype debian --unprivileged 0 --net0 name=eth0,bridge=vmbr0,gw=$adressPrefix.1,ip=$adressPrefix.215/24,gw6=$gatewayV6,ip6=$adressPrefixV6:4f1f/64 --hookscript local:snippets/200.sh $baseConfig 
-    pct create 210 local:vztmpl/$debianTemplate --rootfs volume=local-lvm:50 --cores 6 --memory 10240 -swap 0 --hostname "k3s-agent1" --description "The k3s agent node" --ostype debian --unprivileged 0 --net0 name=eth0,bridge=vmbr0,gw=$adressPrefix.1,ip=$adressPrefix.217/24,gw6=$gatewayV6,ip6=$adressPrefixV6:4f1e/64 --mp0 volume=local-lvm,mp=/mnt/data,backup=1,ro=0,size=500G $baseConfig 
+    pct create 210 local:vztmpl/$debianTemplate --rootfs volume=local-lvm:50 --cores 6 --memory 10240 -swap 0 --hostname "k3s-agent1" --description "The k3s agent node" --ostype debian --unprivileged 0 --net0 name=eth0,bridge=vmbr0,gw=$adressPrefix.1,ip=$adressPrefix.217/24,gw6=$gatewayV6,ip6=$adressPrefixV6:0217/64 --mp0 volume=local-lvm,mp=/mnt/data,backup=1,ro=0,size=500G $baseConfig 
 
 - Setup advanced k3s container config
     ```bash
