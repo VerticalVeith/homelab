@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless
+  namespace: paperless
+  labels:
+    app: paperless
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless
+  template:
+    metadata:
+      labels:
+        app: paperless
+    spec:
+      containers:
+        - name: paperless
+          image: ghcr.io/paperless-ngx/paperless-ngx:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+              name: http
+          env:
+            - name: TZ
+              value: Europe/Berlin
+            - name: PAPERLESS_URL
+              value: https://dms.buergerhoff.com
+            - name: PAPERLESS_ALLOWED_HOSTS
+              value: dms.buergerhoff.com
+            - name: PAPERLESS_CSRF_TRUSTED_ORIGINS
+              value: https://dms.buergerhoff.com
+            - name: REDIS_URL
+              value: redis://paperless-redis:6379/0
+            - name: PAPERLESS_DBHOST
+              valueFrom:
+                secretKeyRef:
+                  name: cluster-paperless-app
+                  key: host
+            - name: PAPERLESS_DBNAME
+              valueFrom:
+                secretKeyRef:
+                  name: cluster-paperless-app
+                  key: dbname
+            - name: PAPERLESS_DBUSER
+              valueFrom:
+                secretKeyRef:
+                  name: cluster-paperless-app
+                  key: user
+            - name: PAPERLESS_DBPASS
+              valueFrom:
+                secretKeyRef:
+                  name: cluster-paperless-app
+                  key: password
+          volumeMounts:
+            - name: paperless-data
+              mountPath: /usr/src/paperless/data
+            - name: paperless-media
+              mountPath: /usr/src/paperless/media
+            - name: paperless-export
+              mountPath: /usr/src/paperless/export
+            - name: paperless-consume
+              mountPath: /usr/src/paperless/consume
+          readinessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 20
+      volumes:
+        - name: paperless-data
+          persistentVolumeClaim:
+            claimName: paperless-data
+        - name: paperless-media
+          persistentVolumeClaim:
+            claimName: paperless-media
+        - name: paperless-export
+          persistentVolumeClaim:
+            claimName: paperless-export
+        - name: paperless-consume
+          persistentVolumeClaim:
+            claimName: paperless-consume
