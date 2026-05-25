@@ -1,0 +1,10 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: first-pool
+  namespace: metallb-system
+spec:
+  addresses:
+  - 192.168.12.230-192.168.12.240
+  - 2a04:4540:6513:1a00::/85 # local IPv6 range
+  - 2a04:4540:652e:6100::/85 # external IPv6 range
