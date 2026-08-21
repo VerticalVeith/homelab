@@ -57,7 +57,7 @@ spec:
         persistence:
           enabled: true
           storageClass: local-data
-          size: 50Gi
+          size: 24Gi
           nextcloudData:
             enabled: true
             storageClass: local-data
