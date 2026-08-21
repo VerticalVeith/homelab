@@ -18,10 +18,10 @@ jobs:
             homelab
 
       - name: Checkout
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@v7.0.1
 
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v46.1.18
+        uses: renovatebot/github-action@v46.2.2
         with:
           configurationFile: .github/renovate-config.json
           token: '${{ steps.get_token.outputs.token }}'
