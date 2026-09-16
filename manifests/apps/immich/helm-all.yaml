@@ -21,14 +21,14 @@ spec:
               containers:
                 main:
                   image:
-                    tag: v3.1.0
+                    tag: v3.2.2
         server:
           controllers:
             main:
               containers:
                 main:
                   image:
-                    tag: v3.1.0
+                    tag: v3.2.2
                   env:
                     DB_HOSTNAME:
                       valueFrom:
