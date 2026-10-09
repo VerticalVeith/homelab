@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/VerticalVeith/homelab
     targetRevision: HEAD
-    path: manifests/apps/vintage-story/install
+    path: manifests/apps/vintagestory/install
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
