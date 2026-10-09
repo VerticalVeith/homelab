@@ -22,8 +22,10 @@ spec:
           ports:
             - containerPort: 42420
               protocol: TCP
+              name: tcp
             - containerPort: 42420
               protocol: UDP
+              name: udp
           volumeMounts:
             - name: vintage-story-data
               mountPath: /vintagestory/data
