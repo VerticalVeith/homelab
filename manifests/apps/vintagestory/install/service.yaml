@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vintage-story
+  namespace: vintage-story
+  labels:
+    app: vintage-story
+spec:
+  ports:
+    - port: 42420
+      targetPort: 42420
+      protocol: TCP
+    - port: 42420
+      targetPort: 42420
+      protocol: UDP
+  selector:
+    app: vintage-story

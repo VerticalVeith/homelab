@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vintage-story
+  namespace: vintage-story
+  labels:
+    app: vintage-story
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vintage-story
+  template:
+    metadata:
+      labels:
+        app: vintage-story
+    spec:
+      containers:
+        - name: vintage-story
+          image: zsuatem/vintagestory:stable
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 42420
+          volumeMounts:
+            - name: vintage-story-data
+              mountPath: /vintagestory/data
+      volumes:
+        - name: vintage-story-data
+          persistentVolumeClaim:
+            claimName: vintage-story-data
