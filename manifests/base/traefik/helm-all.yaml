@@ -22,6 +22,18 @@ spec:
                   to: websecure
                   scheme: https
                   permanent: true
+          vintage-story-tcp:
+            port: 42420
+            exposedPort: 42420
+            protocol: TCP
+            expose:
+              default: true
+          vintage-story-udp:
+            port: 42420
+            exposedPort: 42420
+            protocol: UDP
+            expose:
+              default: true
         ingressRoute:
           dashboard:
             enabled: true
