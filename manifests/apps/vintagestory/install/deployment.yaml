@@ -21,6 +21,9 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 42420
+              protocol: TCP
+            - containerPort: 42420
+              protocol: UDP
           volumeMounts:
             - name: vintage-story-data
               mountPath: /vintagestory/data
