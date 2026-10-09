@@ -10,8 +10,10 @@ spec:
     - port: 42420
       targetPort: 42420
       protocol: TCP
+      name: tcp
     - port: 42420
       targetPort: 42420
       protocol: UDP
+      name: udp
   selector:
     app: vintage-story
